@@ -97,6 +97,8 @@ Notification:
 
 ## Routing table:
 
+## If the postman keep "Sending request...", just cancel it. The request has successfully sent, just the postman does not get the reponse.
+
 ### auth.js
 ```
 /auth/login
