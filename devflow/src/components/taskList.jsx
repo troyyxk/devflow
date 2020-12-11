@@ -30,17 +30,19 @@ class taskList extends Component {
     const member = await boss.json();
     if (member.teamId != "") {
       const task = await getTasksByTeam(member.teamId, memberId);
-      let teamTasks = await task.json()
-      console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
-      console.log(teamTasks)
-      this.setState({ tasks: teamTasks });
+      let teamTasks = await task.json();
+      console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+      console.log(teamTasks);
+      this.setState({
+        tasks: teamTasks,
+        currentUser: member,
+        members: await koo.json(),
+      });
     }
-    this.setState({
-      currentUser: member,
-      members: await koo.json(),
-    });
   }
-
+  findMember(id) {
+    return this.state.members.find((t) => t._id === id);
+  }
   async handleJoin(task) {
     joinTask(task._id, this.state.currentUser._id);
     window.location.reload();
@@ -308,12 +310,12 @@ class taskList extends Component {
                       <Link to={`/personal/${task.assignedById}`}>
                         {task.assignedById != "" && (
                           <img
-                            src={this.state.currentUser.profilePic}
+                            src={this.findMember(task.assignedById).profilePic}
                             style={{ borderRadius: "50%", width: "20px" }}
                           />
                         )}
                         <span style={{ marginLeft: "5px" }}>
-                          {this.state.currentUser.firstName}
+                          {this.findMember(task.assignedById).firstName}
                         </span>
                       </Link>
                     </p>
@@ -322,12 +324,11 @@ class taskList extends Component {
                       {task.assignedToId != "" && (
                         <Link to={`/personal/${task.assignedToId}`}>
                           <img
-                            src={this.state.currentUser.profilePic}
+                            src={this.findMember(task.assignedToId).profilePic}
                             style={{ borderRadius: "50%", width: "20px" }}
                           />
-
                           <span style={{ marginLeft: "5px" }}>
-                            {this.state.currentUser.firstName}
+                            {this.findMember(task.assignedToId).firstName}
                           </span>
                         </Link>
                       )}
