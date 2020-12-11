@@ -237,3 +237,18 @@ sample request body:
     }}
 result: update all task's attributes by input request body.
 ```
+### team.js
+```
+/api/team/all
+requset type: get
+result: get all teams in the data base.
+
+/api/team/:id
+requset type: get
+result: result: get a specific Team with input parameter team id.
+
+/api/team/company/:id
+requset type: get
+result: result: get all teams within a company by input parameter company id.
+
+```
