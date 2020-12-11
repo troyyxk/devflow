@@ -252,3 +252,46 @@ requset type: get
 result: result: get all teams within a company by input parameter company id.
 
 ```
+
+### notification.js
+```
+/api/notification/to/:id
+requset type: get
+sample request body: None
+result: get all notifications to the member with the id id
+
+/api/notification/from/:id
+unused
+requset type: get
+sample request body: None
+result: get all notifications from the member with the id id
+
+/api/notification/all
+requset type: get
+sample request body: None
+result: get all notifications
+
+/api/notification/personal
+requset type: put
+sample request body:
+{ "fromId": "10", "toId": "6", "message": "testing" }
+result: send a personal noticement from member with id 10 to member with id 6
+
+/api/notification/team
+requset type: put
+sample request body:
+{ "teamId": "3", "message": "testing" }
+result: send a team noticement for all members in team with id 3
+
+/api/notification/company
+requset type: put
+sample request body:
+{ "companyId": "1", "message": "testing" }
+result: send a company noticement for all members in company with id 1
+
+/api/notification/readAll
+requset type: post
+sample request body:
+{ "memberId": "2" }
+result: read all notification of the member with id memberId by setting the isUnread field of the notification to false
+```
