@@ -201,7 +201,7 @@ class team extends Component {
                 <div className="col">
                   {this.state.teamMembers.map((member) => (
                     <p className="mt-4">
-                      <Link to={`/personal/${member}`}>
+                      <Link to={`/personal/${member._id}`}>
                         <div className="click">
                           <img
                             src={member.profilePic}
