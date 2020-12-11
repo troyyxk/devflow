@@ -77,7 +77,7 @@ class taskList extends Component {
     item = document.getElementsByClassName("col-sm-4");
     for (i = 0; i < item.length; i++) {
       a = item[i];
-      txtValue = a.children[0].textContent + a.children[1].textContent;
+      txtValue = a.children[0].textContent;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         item[i].style.display = "";
       } else {
@@ -152,7 +152,7 @@ class taskList extends Component {
             onKeyUp={() =>
               this.onKeyUpValue(document.getElementById("myInput"))
             }
-            placeholder="Search Group ID or Task Title.."
+            placeholder="Search Task Title.."
           ></input>
           <div className="row">
             <div className="col">
