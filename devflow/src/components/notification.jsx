@@ -66,6 +66,13 @@ class Notification extends Component {
     this.setState({ selectedNotificationType: curType });
   };
 
+  handleClick = async () => {
+    await readAll(this.state.userId);
+    this.setState({ selectedNotificationType: "All" });
+    window.location.reload();
+    this.props.history.push("/notification/" + this.state.userId);
+  };
+
   getFiltered = () => {
     const select_type = this.state.selectedNotificationType;
 
@@ -109,7 +116,18 @@ class Notification extends Component {
             />
           </div>
           <div className="col">
-            <h1>Notifications</h1>
+            <div className="row">
+
+              <h1>Notifications</h1>
+              {this.state.selectedNotificationType === "Unread" && (
+                <button className="btn btn-primary btn-large float-left"
+                  onClick={() => this.handleClick()}
+                >
+                  Read All
+                </button>
+              )}
+            </div>
+
             <div className="list-group">
               {filtered.map((n) => (
                 <Comment
@@ -121,6 +139,7 @@ class Notification extends Component {
                 />
               ))}
             </div>
+
           </div>
         </div>
       </React.Fragment>
