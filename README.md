@@ -40,7 +40,9 @@ Companies:
         "name": name of the company" :string,
         "bossId": id of the boss :string,
         "companyPic": url :string
+	"isFinish": true or false:string
         }
+	
 Teams:
 	{
         "members": list of members in the team :list,
@@ -64,11 +66,12 @@ Teams:
         "assignedById": the member id that assign the task to :string,
         "taskDetail": task details :string,
     },
+    
 Members:{
         "rank": the rank of the member :string,
         "teamId": the team Id of the member :string,
         "profilePic": the profile picture of the member :string
- "isApproved": member approval in the company :string,
+ 	"isApproved": member approval in the company :string,
         "_id": the id of the member :string,
         "firstName": member’s first name :string,
         "lastName": member’s last name :string,
@@ -77,7 +80,7 @@ Members:{
         "password": member’s password :string,
     },
 
-	Notification:
+Notification:
        {
         "from": the sender’s member id :string,
         "isUnread": check if notification is unread :string,
