@@ -108,23 +108,6 @@ class taskList extends Component {
     b.push(k);
     this.setState({ b });
   }
-  sortCategory = (path) => {
-    const taskss = this.state.tasks.sort(function (a, b) {
-      if (path === "usedTime") {
-        return a.usedTime - b.usedTime;
-      } else if (path === "name") {
-        return ("" + a.name).localeCompare(b.name);
-      } else if (path === "id") {
-        return ("" + a.assignedToId).localeCompare(b.assignedToId);
-      } else if (path == "Group ID") {
-        return ("" + a.teamId).localeCompare(b.teamId);
-      } else if (path == "Estimated Time") {
-        return a.estimatedTime - b.estimatedTime;
-      }
-    });
-    const task = taskss.reverse();
-    this.setState({ task });
-  };
   print = (event, hi) => {
     var filter, item, a, i, txtValue, fil, abyValue, assValue;
     item = document.getElementsByClassName("col-sm-4");
@@ -210,44 +193,6 @@ class taskList extends Component {
             </div>
           </div>
 
-          <span>Sort by(DEC order): </span>
-          <button
-            type="button"
-            onClick={() => this.sortCategory("name")}
-            className="btn btn-outline-secondary mr-1"
-          >
-            Names
-          </button>
-          <button
-            type="button"
-            onClick={() => this.sortCategory("usedTime")}
-            className="btn btn-outline-secondary mr-1"
-          >
-            Used Time
-          </button>
-          <button
-            type="button"
-            onClick={() => this.sortCategory("id")}
-            className="btn btn-outline-secondary mr-1"
-          >
-            ID
-          </button>
-
-          <button
-            type="button"
-            onClick={() => this.sortCategory("Group ID")}
-            className="btn btn-outline-secondary mr-1"
-          >
-            Group ID
-          </button>
-          <button
-            type="button"
-            onClick={() => this.sortCategory("Estimated Time")}
-            className="btn btn-outline-secondary mr-1"
-          >
-            Estimated Time
-          </button>
-          {console.log(this.state)}
           {this.state.currentUser.rank < 3 && (
             <Link to="/taskDetail/new">
               <button className="float-right btn btn-outline-primary">
