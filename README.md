@@ -235,5 +235,5 @@ sample request body:
         "assignedById": "2",
         "taskDetail": "hello",
     }}
-result: update all other task's attributes.
+result: update all task's attributes by input request body.
 ```
