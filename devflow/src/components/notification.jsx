@@ -71,17 +71,17 @@ class Notification extends Component {
 
     let filtered = this.state.data.filter((n) => {
       // return true
-      if (select_type === "" || select_type === "All") {
-        return true;
-      }
       if (select_type === "Unread") {
         return n.isUnread;
       }
-      if (select_type === "System") {
+      else if (select_type === "System") {
         return n.level === "1";
       }
-      if (select_type === "Non-System") {
+      else if (select_type === "Non-System") {
         return n.from !== "System";
+      }
+      else {
+        return true;
       }
     });
 
@@ -89,6 +89,8 @@ class Notification extends Component {
   };
 
   render() {
+    console.log("this.state.selectedNotificationType")
+    console.log(this.state.selectedNotificationType)
     let filtered = this.getFiltered();
     console.log("After filted");
     console.log(filtered);
