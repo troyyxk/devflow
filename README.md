@@ -22,7 +22,7 @@ Navigate to the loggin page, loggin with:
 Username: user
 Password: user
 ```
-Then you will login as admin
+Then you will login as user
 
 Navigate to the loggin page, loggin with:
 ```
@@ -30,6 +30,28 @@ Username: admin
 Password: admin
 ```
 Then you will login as admin
+
+Following are different user you can try, all with password "user":
+```
+daniel
+bill
+tom
+jone
+martin
+user1
+testondate
+```
+
+List of third party libraries:
+```
+bootstrap
+font-awesome
+joi-browser
+uniqid
+nanoid
+nodemon
+uniqid
+```
 
 To check other users, please take a look at our data base at
 ```
