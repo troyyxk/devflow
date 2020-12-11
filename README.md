@@ -30,7 +30,7 @@ To check other users, please take a look at our data base at
 ```
 mongodb+srv://team34:team34Password@devflow.oddf0.mongodb.net/devflow
 ```
-## Data
+## Models
 ```
 Companies:
 	{
@@ -120,3 +120,30 @@ requset type: post
 result: destroy the session.
 
 ```
+### member.js
+```
+/api/member/all
+requset type: get
+result: get all Member in the system.
+
+/api/member/:id
+requset type: get
+result: get a specific member with input parameter id.
+
+/api/member/company/:id
+requset type: get
+result: get all members from a company by input parameter company id.
+
+
+/api/member/team/:id
+requset type: get
+result: get all members from a team by input parameter team id.
+
+
+/api/member/noTeamCompany/:id
+requset type: get
+result: get all members from companies that don't have team by input parameter company id.
+
+
+```
+
