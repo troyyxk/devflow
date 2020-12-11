@@ -32,9 +32,9 @@ mongodb+srv://team34:team34Password@devflow.oddf0.mongodb.net/devflow
 ```
 
 ## Routing table:
-```
-auth.js
 
+### auth.js
+```
 /login
 requset type: post
 sample request body: 
