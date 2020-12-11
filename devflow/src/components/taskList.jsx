@@ -25,10 +25,10 @@ class taskList extends Component {
     if (localStorage.rank == 0) {
       this.props.history.push("/admin");
     }
-    if (localStorage.rank == 1) {
+    else if (localStorage.rank == 1) {
       this.props.history.push("/ceo/" + localStorage.companyId);
     }
-    if (localStorage.teamId == "") {
+    else if (localStorage.teamId == "") {
       this.props.history.push("/company/" + localStorage.companyId);
     }
     const memberId = localStorage.memberId;
