@@ -1,7 +1,11 @@
 import React, { Component, Fragment } from "react";
 import "./taskList.css";
 import { getTasksByTeam, joinTask, finishTask } from "../services/taskService";
-import { getAllMembers, getMemberById } from "../services/memberService";
+import {
+  getAllMembers,
+  getMemberById,
+  getMembersByTeamId,
+} from "../services/memberService";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./common/navBar";
@@ -24,23 +28,30 @@ class taskList extends Component {
     if (localStorage.rank == 1) {
       this.props.history.push("/ceo/" + localStorage.companyId);
     }
+    if (localStorage.teamId == "") {
+      this.props.history.push("/company/" + localStorage.companyId);
+    }
     const memberId = localStorage.memberId;
-    const koo = await getAllMembers();
+    const teamId = localStorage.teamId;
+    const koo = await getMembersByTeamId(teamId);
     const boss = await getMemberById(memberId);
     const member = await boss.json();
     if (member.teamId != "") {
       const task = await getTasksByTeam(member.teamId, memberId);
       let teamTasks = await task.json();
-      console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
-      console.log(teamTasks);
+      let team = await koo.json();
       this.setState({
         tasks: teamTasks,
         currentUser: member,
-        members: await koo.json(),
+        members: team,
       });
     }
   }
   findMember(id) {
+    console.log(id);
+    console.log(this.state.tasks);
+    console.log(this.state.members);
+    console.log(this.state.members.find((t) => t._id === id));
     return this.state.members.find((t) => t._id === id);
   }
   findMemberFirstName(id) {
