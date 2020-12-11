@@ -43,6 +43,13 @@ class taskList extends Component {
   findMember(id) {
     return this.state.members.find((t) => t._id === id);
   }
+  findMemberFirstName(id) {
+    if (this.findMember(id) == null) {
+      return "";
+    } else {
+      return this.findMember(id).firstName;
+    }
+  }
   async handleJoin(task) {
     joinTask(task._id, this.state.currentUser._id);
     window.location.reload();
@@ -52,20 +59,6 @@ class taskList extends Component {
     window.location.reload();
   }
 
-  getCurrentGID = (id) => {
-    var input, i;
-    input = this.state.tasks;
-    for (i = 0; i < input.length; i++) {
-      if (input[i].createdById === id) {
-        return this.getMemberByIdIn(input[i].createdById).firstName;
-      } else if (input[i].assignedToId === id) {
-        return this.getMemberByIdIn(input[i].assignedToId).firstName;
-      } else if (input[i].assignedById === id) {
-        return this.getMemberByIdIn(input[i].assignedById).firstName;
-      }
-    }
-    return "None";
-  };
   getAssignedTask = (id) => {
     var input, i, c;
     c = 0;
@@ -134,24 +127,21 @@ class taskList extends Component {
   };
   print = (event, hi) => {
     var k;
-    var filter, item, a, i, txtValue, fil, abyValue, assValue, creValue;
+    var filter, item, a, i, txtValue, fil, abyValue, assValue;
     item = document.getElementsByClassName("col-sm-4");
     filter = document.getElementsByClassName("filters");
-    abyValue = this.getMemberByIdIn(filter[0].value).firstName;
-    assValue = this.getMemberByIdIn(filter[1].value).firstName;
-    creValue = this.getMemberByIdIn(filter[2].value).firstName;
+    abyValue = this.findMemberFirstName(filter[0].value);
+    assValue = this.findMemberFirstName(filter[1].value);
     for (i = 0; i < item.length; i++) {
       a = item[i];
 
-      var uAbyValue, uAssValue, uCreValue;
-      uAbyValue = a.childNodes[3].textContent.replace("Assigned By: ", "");
-      uAssValue = a.childNodes[4].textContent.replace("Assigned To: ", "");
-      uCreValue = a.childNodes[2].textContent.replace("Created By: ", "");
+      var uAbyValue, uAssValue;
+      uAbyValue = a.childNodes[2].textContent.replace("Assigned By: ", "");
+      uAssValue = a.childNodes[3].textContent.replace("Assigned To: ", "");
       item[i].style.display = "none";
       if (
         (filter[0].value == "DEFAULT" || abyValue == uAbyValue) &&
-        (filter[1].value == "DEFAULT" || assValue == uAssValue) &&
-        (filter[2].value == "DEFAULT" || abyValue == uAssValue)
+        (filter[1].value == "DEFAULT" || assValue == uAssValue)
       ) {
         item[i].style.display = "";
       }
@@ -207,24 +197,6 @@ class taskList extends Component {
                 <select
                   className="form-control filters"
                   onChange={(e) => this.print(e, "assigned_to")}
-                  defaultValue={"DEFAULT"}
-                >
-                  <option value="DEFAULT">Any</option>
-                  <option value="">Empty</option>
-                  {this.state.members.map((member) => (
-                    <option key={member._id} value={member._id}>
-                      {member.firstName}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className="col">
-              <div className="form-group">
-                <label>Created by:</label>
-                <select
-                  className="form-control filters"
-                  onChange={(e) => this.print(e, "created_by")}
                   defaultValue={"DEFAULT"}
                 >
                   <option value="DEFAULT">Any</option>
