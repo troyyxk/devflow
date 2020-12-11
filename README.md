@@ -103,7 +103,20 @@ Notification:
 requset type: post
 sample request body: 
 { "data": { "userName": "user", "password": "user" } }
-result: the login user data
+result: the login user data.
 
+/register
+request type: put
+sample request body:
+{ "data": {"firstName":"daniel","lastName":"he","companyName":"Apple","userName":"daniel123",password:"user"}}
+result: save input data into the data base.
+
+/check-session
+request type: get
+result: if it success it will return status 200 with current user's memberId, else return status 401.
+
+/logout
+requset type: post
+result: destroy the session.
 
 ```
