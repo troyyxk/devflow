@@ -126,7 +126,6 @@ class taskList extends Component {
     this.setState({ task });
   };
   print = (event, hi) => {
-    var k;
     var filter, item, a, i, txtValue, fil, abyValue, assValue;
     item = document.getElementsByClassName("col-sm-4");
     filter = document.getElementsByClassName("filters");
