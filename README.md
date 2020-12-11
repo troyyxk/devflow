@@ -147,3 +147,16 @@ result: get all members from companies that don't have team by input parameter c
 
 ```
 
+### company.js
+```
+/api/compay/all
+requset type: get
+sample request body: None
+result: all companies' data
+
+/api/compay/:id
+requset type: get
+sample request body: None
+result: get data of with the id id
+```
+
