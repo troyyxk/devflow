@@ -118,7 +118,6 @@ result: if it success it will return status 200 with current user's memberId, el
 /auth/logout
 requset type: post
 result: destroy the session.
-
 ```
 ### member.js
 ```
@@ -128,6 +127,7 @@ result: get all Member in the system.
 
 /api/member/:id
 requset type: get
+
 result: get a specific member with input parameter id.
 
 /api/member/company/:id
@@ -159,4 +159,81 @@ requset type: get
 sample request body: None
 result: get data of with the id id
 ```
+### tasks.js
+```
+/api/task/team/:teamId/:memberId
+requset type: get
+result: get team tasks with team ID and memberID, memberID is used to check if member are within team.
+Example return:
+[
+    {
+        "_id": "SkQwg2pztcwWeBb4yeNlL",
+        "teamId": "1",
+        "companyId": "1",
+        "name": "troll",
+        "estimatedTime": 0,
+        "usedTime": 0,
+        "assignedToId": "2",
+        "assignedById": "2",
+        "taskDetail": "",
+        "isFinish": "true",
+        "__v": 0
+    }
+   ]
+   
+/api/task/all
+requset type: get
+result: get all tasks in the data base.
 
+/api/task/:id
+requset type: get
+result: result: get a specific task with input parameter id.
+
+/api/task/company/:id
+requset type: get
+result: get all tasks from a company by input parameter company id.
+
+/api/task/finish
+request type:post
+sample request body: 
+{ "data": { "taskId": "1"} }
+result: it will change the finish attribute of the task.
+
+/api/task/join
+request type:post
+sample request body: 
+{ "data": { "taskId": "1", "memberId","1"}}
+result: it will change the assignedToId attribute of the task into memberId in the request body.
+
+/api/task/join
+request type:put
+sample request body: 
+   {data: {
+        "teamId": "1",
+        "companyId": "1",
+        "name": "troll",
+        "estimatedTime": 0,
+        "usedTime": 0,
+        "assignedToId": "2",
+        "assignedById": "2",
+        "taskDetail": "hello",
+        "isFinish": "false",
+    }}
+result: it will add the task into the data base with the input attributes and generated id.
+
+/api/task/update
+requset type: post
+sample request body: 
+   {data: {
+   	"id":"1",
+       "teamId": "1",
+       "companyId": "1",
+       "name": "troll",
+       "estimatedTime": 0,
+        "usedTime": 0,
+        "assignedToId": "2",
+        "assignedById": "2",
+        "taskDetail": "hello",
+    }}
+result: update all other task's attributes.
+```
