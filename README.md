@@ -30,3 +30,16 @@ To check other users, please take a look at our data base at
 ```
 mongodb+srv://team34:team34Password@devflow.oddf0.mongodb.net/devflow
 ```
+
+##Routing table:
+```
+auth.js
+
+/login
+requset type: post
+sample request body: 
+{ "data": { "userName": "user", "password": "user" } }
+result: the login user data
+
+
+```
