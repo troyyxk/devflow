@@ -138,7 +138,7 @@ class taskDetail_Present extends React.Component {
               </div>
               <br></br>
               {console.log(this.state.current.rank)}
-              {this.state.isFinish === "false" && (
+              {this.state.data.isFinish === "false" && (
                 <div className="row">
                   {this.state.current.rank < 3 && (
                     <Link to={`/taskDetail/${this.state.data._id}`}>
@@ -151,7 +151,7 @@ class taskDetail_Present extends React.Component {
               )}
             </div>
             {this.state.data.assignedToId === this.state.current._id &&
-              this.state.isFinish === "false" && (
+              this.state.data.isFinish === "false" && (
                 <div className="col-3">
                   <input
                     className="form-control mg-2"
